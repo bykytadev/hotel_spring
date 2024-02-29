@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,8 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
+    @Value("${jwt.secret}")
+    private String jwtSecret;
 
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -65,7 +68,7 @@ public class JwtUtil {
 
     // text -> base64 -> bytes -> key
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode("596e6c72655852684947526c63434230636d4670");
+        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
