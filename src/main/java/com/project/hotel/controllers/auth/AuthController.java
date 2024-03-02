@@ -1,4 +1,4 @@
-package com.project.hotel.controllers;
+package com.project.hotel.controllers.auth;
 
 import java.util.Optional;
 
