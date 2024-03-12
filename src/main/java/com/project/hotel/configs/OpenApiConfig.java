@@ -1,6 +1,5 @@
 package com.project.hotel.configs;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -26,8 +25,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
         ),
         security = @SecurityRequirement(name = "bearer-key"),
         servers = {
-                @Server(url = "http://localhost:8080", description = "Local Development Server"),
-                @Server(url = "http://171.239.86.22:8080", description = "Production Server"),
+            @Server(url = "http://localhost:8080", description = "Local Development Server"),
+            @Server(url = "http://171.239.86.22:8080", description = "Production Server"),
         }
 )
 

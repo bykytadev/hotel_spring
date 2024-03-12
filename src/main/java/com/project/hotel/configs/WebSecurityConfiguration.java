@@ -43,6 +43,10 @@ public class WebSecurityConfiguration {
         "/webjars/swagger-ui/**",
     };
 
+    public static final String[] ACTUATOR_WHITELIST = {
+        "/api/actuator/**",
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
@@ -54,6 +58,8 @@ public class WebSecurityConfiguration {
                 .requestMatchers("/api/customer/**")
                 .hasAnyAuthority(UserRole.CUSTOMER.name())
                 .requestMatchers(SWAGGER_WHITELIST)
+                .permitAll()
+                .requestMatchers(ACTUATOR_WHITELIST)
                 .permitAll()
                 .anyRequest()
                 .authenticated())
