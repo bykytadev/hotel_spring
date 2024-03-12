@@ -31,6 +31,18 @@ public class WebSecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserService userService;
 
+    public static final String[] SWAGGER_WHITELIST = {
+        "/api-docs",
+        "/api-docs/**",
+        "/swagger-resources",
+        "/swagger-resources/**",
+        "/configuration/ui",
+        "/configuration/security",
+        "/swagger-ui/**",
+        "/swagger-ui.html",
+        "/webjars/swagger-ui/**",
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
@@ -41,6 +53,8 @@ public class WebSecurityConfiguration {
                 .hasAnyAuthority(UserRole.ADMIN.name())
                 .requestMatchers("/api/customer/**")
                 .hasAnyAuthority(UserRole.CUSTOMER.name())
+                .requestMatchers(SWAGGER_WHITELIST)
+                .permitAll()
                 .anyRequest()
                 .authenticated())
             .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))

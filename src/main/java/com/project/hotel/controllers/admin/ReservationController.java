@@ -17,7 +17,6 @@ public class ReservationController {
 
     private final ReservationService reservationService;
 
-
     @GetMapping("/reservations/{pageNumber}")
     public ResponseEntity<?> getAllReservations(@PathVariable int pageNumber) {
         return ResponseEntity.ok(reservationService.getAllReservations(pageNumber));
