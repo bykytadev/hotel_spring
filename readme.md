@@ -11,7 +11,7 @@ The frontend of this project is built with Angular and can be found [here](https
 To install the project, please follow these steps:
 
 ```sh
-git clone https://github.com/bykytadev/hotel_spring
+git clone git@github.com:bykytadev/hotel_spring.git
 cd hotel_spring
 mvn install
 ```
@@ -40,7 +40,7 @@ Frontend của dự án này được xây dựng bằng Angular và có thể t
 Để cài đặt dự án, hãy thực hiện các bước sau:
 
 ```sh
-git clone https://github.com/bykytadev/hotel_spring
+git clone git@github.com:bykytadev/hotel_spring.git
 cd hotel_spring
 mvn install
 ```
